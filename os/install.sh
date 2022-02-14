@@ -30,12 +30,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 nvm install "lts/*"
 
 # Change MacOS configuration
-source .macos
-
-# Create private-profile
-cd ~
-mkdir workspace
-mkdir tmp
+source $HOME/.dotfiles/plugins/dotfiles-cesalberca/os/.macos
 
 # Login to iCloud
 mas signin cesalberca@gmail.com
