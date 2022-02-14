@@ -23,7 +23,7 @@ defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+sudo nvram SystemAudioVolume=%80
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -40,11 +40,6 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Automatically open a new Finder window when a volume is mounted
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
-
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
@@ -56,7 +51,7 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Change the default screnshots folder
-defaults write com.apple.screencapture location ~/Pictures/Screenshots
+defaults write com.apple.screencapture location ~/Desktop
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -75,7 +70,7 @@ defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
 
 # Prevent apps from staying in Dock
 defaults write com.apple.dock show-recents -bool no
-defaults write com.apple.dock recent-apps -array # intentionally empty
+defaults write com.apple.dock persistent-apps -array
 
 # Disable automatic modifications of entered text
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
@@ -101,9 +96,6 @@ defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -i
 defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -int 1
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
 defaults write -g AppleShowScrollBars -string "Always"
 defaults write -g NSWindowResizeTime -float 0.001
 
@@ -117,7 +109,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Avoid period substitution
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# Disable smart quotes as they’re annoying when typing code
+# Disable smart quotes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable auto-correct
