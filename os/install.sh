@@ -26,9 +26,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # Install zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# Install LTS Node
-nvm install "lts/*"
-
 # Change MacOS configuration
 source $HOME/.dotfiles/plugins/dotfiles-cesalberca/os/.macos
 
