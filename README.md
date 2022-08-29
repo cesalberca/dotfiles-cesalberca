@@ -26,7 +26,7 @@ The file's structure is important to handle the configuration, letting you separ
 The following structure is created by this template:
 
 ```shell
-├─ bin   # This folder contains custom binaries. 
+├─ bin   # This folder contains custom binaries.
 ├─ git   # This folder contains your git config.
 ├─ os    # This folder contains your specific config for your Operating System.
 ├─ zsh   # This folder contains your config scripts for your terminal.
@@ -95,3 +95,5 @@ For example:
 ```shell
 dotfiles uninstall-plugin my-awesome-plugin
 ```
+
+1. Change ctrl with mayusc
