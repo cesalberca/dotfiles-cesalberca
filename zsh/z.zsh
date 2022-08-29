@@ -1,1 +1,1 @@
-source /usr/local/etc/profile.d/z.sh
+. $(brew --prefix)/etc/profile.d/z.sh
