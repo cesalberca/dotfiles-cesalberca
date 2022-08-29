@@ -1,4 +1,4 @@
-# GIT
+# git
 
 This folder contains your git config.
 

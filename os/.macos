@@ -47,9 +47,6 @@ chflags nohidden ~/Library
 defaults write com.apple.dock wvous-br-corner -int 4
 defaults write com.apple.dock wvous-br-modifier -int 0
 
-# Show battery percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-
 # Change the default screnshots folder
 defaults write com.apple.screencapture location ~/Desktop
 
@@ -57,10 +54,6 @@ defaults write com.apple.screencapture location ~/Desktop
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Use fn functions as default
 defaults write .GlobalPreferences.plist com.apple.keyboard.fnState -int 1
@@ -89,20 +82,6 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1
 defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 defaults write -g com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map two fingers tap to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -int 1
-
-defaults write -g AppleShowScrollBars -string "Always"
-defaults write -g NSWindowResizeTime -float 0.001
-
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
@@ -117,9 +96,3 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
-
-# Disable sound effects like screenshots
-defaults write "Apple Global Domain" com.apple.sound.uiaudio.enabled -int 0

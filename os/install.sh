@@ -13,8 +13,5 @@ fi
 # Change MacOS configuration
 source $HOME/.dotfiles/plugins/dotfiles-cesalberca/os/.macos
 
-# Login to iCloud
-mas signin cesalberca@gmail.com
-
 # Install app store's apps
 mas install 1263070803 # Lungo
