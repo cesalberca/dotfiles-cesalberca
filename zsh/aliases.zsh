@@ -9,8 +9,7 @@ alias ip='ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk "{print $2}"'
 alias publicIp="curl https://ipinfo.io/ip"
 trash () { command mv "$@" ~/.Trash; }
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
-alias work="cd ~/Workspace"
-alias tmp="cd ~/Tmp"
+alias work="cd ~/workspace"
+alias tmp="cd ~/tmp"
 alias typora="open -a typora"
-alias python="python3"
 alias webstorm="~/webstorm"
