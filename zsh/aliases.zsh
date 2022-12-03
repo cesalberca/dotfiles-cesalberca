@@ -1,3 +1,4 @@
+alias g="git"
 alias gl="git log --all --decorate --oneline --graph"
 alias gs="git status"
 alias ll="ls -FGlAhp"
@@ -11,6 +12,5 @@ trash () { command mv "$@" ~/.Trash; }
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias work="cd ~/workspace"
 alias tmp="cd ~/tmp"
-alias typora="open -a typora"
 alias webstorm="~/webstorm"
 alias intellij="~/intellij"
