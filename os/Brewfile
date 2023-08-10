@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 
 cask "arc"
+cask "google-chrome"
 cask "firefox"
 cask "spotify"
 cask "jetbrains-toolbox"
@@ -10,6 +11,7 @@ cask "gas-mask"
 cask "warp"
 cask "1password"
 cask "rectangle"
+cask "vlc"
 cask "maccy"
 cask "shottr"
 cask "notion"
