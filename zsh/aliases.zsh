@@ -12,5 +12,5 @@ trash () { command mv "$@" ~/.Trash; }
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 alias work="cd ~/workspace"
 alias tmp="cd ~/tmp"
-alias webstorm="~/webstorm"
+alias webstorm="/usr/local/bin/webstorm"
 alias intellij="~/intellij"

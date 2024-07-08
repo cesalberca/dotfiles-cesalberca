@@ -32,4 +32,5 @@ cask "spotify"
 cask "vlc"
 cask "warp"
 cask "whatsapp"
+cask "youtube-dl"
 
