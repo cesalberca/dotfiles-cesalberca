@@ -5,7 +5,7 @@ brew "gifski"
 brew "mas"
 brew "micro"
 brew "volta"
-brew "youtube-dl"
+brew "yt-dlp"
 brew "z"
 
 cask "1password"
