@@ -1,6 +1,6 @@
 [user]
 	name = César Alberca
-	email = cesalberca@gmail.com
+	email = cesar@cesalberca.com
 [alias]
   c = commit -m
   ch = checkout
