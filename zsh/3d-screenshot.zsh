@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -o errexit
-
 screenshot3d() {
   local screenshot="$1"
 
