@@ -1,7 +1,7 @@
 [user]
 	name = César Alberca
 	email = cesar@cesalberca.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuXTahnQbV+3ZzG/5HsraBWJE/zU8gk6Np/iU0xE4ri
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRos8BTCuHSAiocGJ6GX5ptUqIW0FJUVOX5+ECIfDih
 [alias]
   c = commit -m
   ch = checkout
