@@ -1,6 +1,7 @@
 tap 'homebrew/bundle'
 
 brew "deno"
+brew "battery"
 brew "imagemagick"
 brew "gifski"
 brew "mas"
