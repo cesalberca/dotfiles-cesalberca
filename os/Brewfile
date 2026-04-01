@@ -1,5 +1,6 @@
 tap 'homebrew/bundle'
 
+brew "asciinema"
 brew "deno"
 brew "imagemagick"
 brew "gifski"
