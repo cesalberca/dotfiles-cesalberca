@@ -2,6 +2,7 @@ tap 'homebrew/bundle'
 
 brew "asciinema"
 brew "deno"
+brew "gemini-cli"
 brew "imagemagick"
 brew "gifski"
 brew "mas"
