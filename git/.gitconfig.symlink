@@ -1,22 +1,29 @@
 [user]
 	name = César Alberca
 	email = cesar@cesalberca.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRos8BTCuHSAiocGJ6GX5ptUqIW0FJUVOX5+ECIfDih
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRos8BTCuHSAiocGJ6GX5ptUqIW0FJUVOX5+ECIfDih
 [alias]
-  c = commit -m
-  ch = checkout
-  a = add
-  p = pull
-  d = push
-  f = fetch
+	c = commit -m
+	ch = checkout
+	a = add
+	p = pull
+	d = push
+	f = fetch
 [url "https://github.com/"]
-    insteadOf = gh:
+	insteadOf = gh:
 [core]
-	excludesfile = /Users/cesaralberca/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	ignoreCase = false
-[commit]
-	template = /Users/calberca/.stCommitMsg
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+	line-numbers = true
+[merge]
+	conflictstyle = zdiff3
 [branch "main"]
 	remote = origin
 	merge = refs/heads/main
@@ -27,8 +34,8 @@
 [init]
 	defaultBranch = main
 [gpg]
-  format = ssh
+	format = ssh
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [commit]
-  gpgsign = true
+	gpgsign = true

@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Create hushlogin
 touch ~/.hushlogin
 
@@ -7,11 +10,10 @@ if [[ ! -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# Add 1password SSH keys
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
 # Change MacOS configuration
-source $HOME/.dotfiles/plugins/dotfiles-cesalberca/os/.macos
+source "$(dirname "$0")/.macos"
 
-# Install app store's apps
-mas install 1263070803 # Lungo
+# Install app store's apps (idempotent)
+if ! mas list | grep -q 1263070803; then
+    mas install 1263070803 # Lungo
+fi

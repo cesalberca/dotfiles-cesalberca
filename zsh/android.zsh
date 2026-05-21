@@ -1,1 +1,1 @@
-export ANDROID_HOME=/Users/cesalberca/Library/Android/sdk
+export ANDROID_HOME="$HOME/Library/Android/sdk"
