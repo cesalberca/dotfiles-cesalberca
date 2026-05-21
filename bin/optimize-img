@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<EOF
+Usage: optimize-img <file|dir>... [options]
+
+Optimize image(s): strip metadata, recompress, optionally resize.
+Supports: jpg, jpeg, png, gif, webp
+
+Options:
+  -q, --quality N      JPEG/WebP quality 0-100 (default: 82)
+  -w, --max-width N    Max width in px, preserve aspect (default: no resize)
+  -i, --in-place       Overwrite original (default: ./optimized/)
+  -r, --recursive      Recurse into directories (default: top-level only)
+  -h, --help           Show this help
+
+Examples:
+  optimize-img photo.jpg
+  optimize-img ./screenshots --in-place
+  optimize-img *.png -w 1600 -q 75
+EOF
+}
+
+quality=82
+max_width=0
+in_place=0
+recursive=0
+inputs=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -q|--quality) quality="$2"; shift 2;;
+    -w|--max-width) max_width="$2"; shift 2;;
+    -i|--in-place) in_place=1; shift;;
+    -r|--recursive) recursive=1; shift;;
+    -h|--help) usage; exit 0;;
+    --) shift; while [[ $# -gt 0 ]]; do inputs+=("$1"); shift; done;;
+    -*) echo "Unknown option: $1" >&2; exit 1;;
+    *) inputs+=("$1"); shift;;
+  esac
+done
+
+[[ ${#inputs[@]} -eq 0 ]] && { usage; exit 1; }
+
+command -v magick >/dev/null 2>&1 || { echo "magick (imagemagick) required" >&2; exit 1; }
+
+filesize() { stat -f%z "$1" 2>/dev/null || stat -c%s "$1"; }
+
+human() {
+  local bytes=$1
+  if (( bytes >= 1048576 )); then
+    awk -v b="$bytes" 'BEGIN{printf "%.1fMB", b/1048576}'
+  elif (( bytes >= 1024 )); then
+    awk -v b="$bytes" 'BEGIN{printf "%.1fKB", b/1024}'
+  else
+    echo "${bytes}B"
+  fi
+}
+
+optimize_one() {
+  local src="$1" dest
+  if (( in_place )); then
+    dest="$src"
+  else
+    local outdir
+    outdir="$(dirname "$src")/optimized"
+    mkdir -p "$outdir"
+    dest="$outdir/$(basename "$src")"
+  fi
+
+  local ext="${src##*.}"
+  ext="$(printf '%s' "$ext" | tr '[:upper:]' '[:lower:]')"
+
+  local resize_args=()
+  (( max_width > 0 )) && resize_args=(-resize "${max_width}>")
+
+  local before
+  before=$(filesize "$src")
+
+  case "$ext" in
+    jpg|jpeg)
+      magick "$src" -strip -interlace Plane -sampling-factor 4:2:0 -quality "$quality" ${resize_args[@]+"${resize_args[@]}"} "$dest"
+      command -v jpegoptim >/dev/null 2>&1 && jpegoptim --strip-all --quiet "$dest" || true
+      ;;
+    png)
+      magick "$src" -strip ${resize_args[@]+"${resize_args[@]}"} "$dest"
+      if command -v pngquant >/dev/null 2>&1; then
+        pngquant --force --skip-if-larger --output "$dest" -- "$dest" 2>/dev/null || true
+      fi
+      command -v oxipng >/dev/null 2>&1 && oxipng -o 4 --strip safe --quiet "$dest" || true
+      ;;
+    gif)
+      if command -v gifsicle >/dev/null 2>&1; then
+        if (( max_width > 0 )); then
+          gifsicle -O3 --resize-width "$max_width" "$src" -o "$dest"
+        else
+          gifsicle -O3 "$src" -o "$dest"
+        fi
+      else
+        magick "$src" -strip ${resize_args[@]+"${resize_args[@]}"} "$dest"
+      fi
+      ;;
+    webp)
+      magick "$src" -strip -quality "$quality" ${resize_args[@]+"${resize_args[@]}"} "$dest"
+      ;;
+    *)
+      echo "skip (unsupported): $src" >&2
+      return 0
+      ;;
+  esac
+
+  local after saved_pct
+  after=$(filesize "$dest")
+  if (( before > 0 )); then
+    saved_pct=$(( (before - after) * 100 / before ))
+  else
+    saved_pct=0
+  fi
+  printf "%s  %s → %s  (-%d%%)\n" "$src" "$(human "$before")" "$(human "$after")" "$saved_pct"
+}
+
+walk_dir() {
+  local dir="$1" depth_args=()
+  (( recursive )) || depth_args=(-maxdepth 1)
+  while IFS= read -r -d '' f; do
+    optimize_one "$f"
+  done < <(find "$dir" ${depth_args[@]+"${depth_args[@]}"} -type f \
+    \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' \) \
+    -not -path '*/optimized/*' -print0)
+}
+
+for input in "${inputs[@]}"; do
+  if [[ -d $input ]]; then
+    walk_dir "$input"
+  elif [[ -f $input ]]; then
+    optimize_one "$input"
+  else
+    echo "not found: $input" >&2
+  fi
+done

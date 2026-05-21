@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<EOF
+Usage: resize-img [max_height]
+
+Resize all images in cwd to <max_height>px (preserving aspect ratio).
+Output written to ./resized-images/.
+
+Default max_height: 1024
+Supports: jpg, jpeg, png, gif
+EOF
+}
+
+case "${1:-}" in
+  -h|--help) usage; exit 0;;
+esac
+
+max_height="${1:-1024}"
+output_directory="resized-images"
+
+mkdir -p "$output_directory"
+
+shopt -s nullglob nocaseglob
+for image in ./*.jpg ./*.jpeg ./*.png ./*.gif; do
+  [[ -f $image ]] || continue
+  filename=$(basename "$image")
+  magick "$image" -resize x"$max_height" "$output_directory/$filename"
+  echo "Resized: $image -> $output_directory/$filename"
+done
+
+echo "All images resized to max height of ${max_height}px in $output_directory/"
