@@ -1,99 +1,156 @@
-# dotfiles-plugin-template
+# dotfiles-cesalberca
 
-## Getting started
+Personal [dotfiles](https://github.com/dotplug/dotfiles) plugin.
 
-This repository is used like a template by [dotfiles project](https://github.com/autentia/dotfiles). If you want to use this repository to extend your ```dotfiles``` configuration you have two options:
+## Install
 
-1. Using ```dotfiles``` command to initialize your plugin executing the following command replacing "<PLUGIN_NAME>" with the desired name:
-
-```shell
-dotfiles create-plugin <PLUGIN_NAME>
-```
-
-For example:
+Install the [dotfiles](https://github.com/dotplug/dotfiles) framework first, then:
 
 ```shell
-dotfiles create-plugin my-awesome-plugin
+dotfiles install-plugin git@github.com:cesalberca/dotfiles-cesalberca.git
+dotfiles install
 ```
 
-
-2. Fork this repository to your GitHub profile and commit your changes.
-
-## How does it work?
-
-The file's structure is important to handle the configuration, letting you separate each tool's configuration in different folders, allowing you to isolate each configuration.
-
-The following structure is created by this template:
+## Layout
 
 ```shell
-├─ bin   # This folder contains custom binaries.
-├─ git   # This folder contains your git config.
-├─ os    # This folder contains your specific config for your Operating System.
-├─ zsh   # This folder contains your config scripts for your terminal.
+├─ bin   # Custom executables added to $PATH
+├─ git   # Git config (symlinked to $HOME)
+├─ os    # macOS defaults + Brewfile + install.sh
+└─ zsh   # Shell aliases, env, plugins
 ```
 
-Relax, you have an explanation file for each folder:
+Each top-level folder is a **topic**:
 
-- [bin](bin/README.md)
-- [git](git/README.md)
-- [os](os/README.md)
-- [zsh](zsh/README.md)
+- `topic/bin/` — PATH additions
+- `topic/install.sh` — runs on `dotfiles install`
+- `topic/*.zsh` — sourced by shell startup
+- `topic/<name>.symlink` — symlinked to `$HOME/<name>`
 
-These folders are what we call **topics**. The structure of each topic is as follows:
+---
 
-- **topic/bin/**: Anything inside the bin directory will be added to the $PATH.
-- **topic/install.sh**: Any file named `install.sh` will be executed automatically when plugins are being installed.
-- **topic/\<FILENAME | DIRNAME>.symlink**: Any file that ends with `*.symlink` will be added as a symlink to your $HOME.
+## Tooling overview
 
-### Create a new topic
+### Custom binaries (`bin/`)
 
-If you wanted to create a new topic you can create a directory `<TOPIC>` in the root of the plugin. Inside you can do some or all of the following:
-
-1. Create an `install.sh` file that contains the installation process (only required for tools that are not present in Homebrew, if they are it's easier to install by updating the `Brewfile`)
-2. Create an `alias.zsh` file that contains the commands you want
-3. Create a file `functions.zsh` to create utility functions for that topic
-4. Create a directory ending with `.symlink` that will symlink all the files inside that directory to your home directory
-
-## How to install a plugin
-
-If you have your plugin configured you would need to push it to your favorite repository manager. Then you can add it to ```dotfiles``` in your computer executing:
+| Tool | Purpose |
+|---|---|
+| `optimize-img` | Strip metadata + recompress images (jpg/png/gif/webp), optional resize. |
+| `resize-img` | Batch resize images in cwd to a max height. |
+| `3d-screenshot` | Apply 3D perspective skew to a screenshot. |
 
 ```shell
-dotfiles install-plugin <GIT_REPOSITORY_URL>
+optimize-img photo.jpg                       # 75-80% smaller, writes to ./optimized/
+optimize-img ./screenshots -w 1600 -q 80     # resize + quality
+optimize-img *.png --in-place                # overwrite originals
+optimize-img ./assets -r                     # recurse
+
+resize-img 800                               # resize all images in cwd to 800px max height
+3d-screenshot shot.png                       # writes shot_3d.png
 ```
 
-For example:
+### Shell replacements (modern CLI)
+
+| Tool | Replaces | Usage |
+|---|---|---|
+| `eza` | `ls` | `eza -lah --git --icons` — colored, git-aware listing |
+| `bat` | `cat` | `bat file.ts` — syntax-highlighted paged view |
+| `rg` (ripgrep) | `grep -r` | `rg "pattern" src/` — fast recursive search |
+| `zoxide` (`z`) | `cd` | `z foo` — jump to frecent dirs matching `foo`; `zi` interactive picker |
+| `fzf` | — | `Ctrl+R` history fuzzy search; `Ctrl+T` file picker; `**<TAB>` completion |
+| `delta` | `diff` | Auto-wraps `git diff`/`git log` output (configured in `.gitconfig`) |
+| `micro` | `nano`/`vim` | Modern terminal editor; `EDITOR=micro` |
+
+### Version manager
+
+| Tool | Purpose |
+|---|---|
+| `mise` | Replaces `volta` + `sdkman` + `nvm` + `pyenv`. Unified runtime manager. |
 
 ```shell
-dotfiles install-plugin git@github.com:autentia/my-awesome-plugin-template.git
+mise use -g node@22 python@3.12 java@21      # set global versions
+mise use node@20                              # per-project (writes .mise.toml)
+mise ls                                       # installed runtimes
+mise upgrade                                  # update all
 ```
 
-## How to update
+### Shell plugins
 
-Plugins are linked to git repository, so you can commit your changes to your plugin repository and then execute the following command to update it:
+| Plugin | Effect |
+|---|---|
+| `zsh-autosuggestions` | Gray inline suggestion from history; `→` to accept |
+| `zsh-syntax-highlighting` | Live command coloring (red = invalid, green = found) |
+
+### Git tooling
 
 ```shell
-dotfiles update-plugin <PLUGIN_NAME>
+g                  # alias → git
+gs                 # git status
+gl                 # git log graph
+g c "msg"          # commit -m
+g ch <branch>      # checkout
 ```
 
-For example:
+Diffs use `delta` with line numbers + navigation (`n`/`N` between hunks).
+
+### AI / runtimes
+
+| Tool | Purpose |
+|---|---|
+| `claude-code` | Anthropic CLI agent |
+| `claude` (cask) | Claude desktop app |
+| `deno` | Secure JS/TS runtime |
+| `bun` | Fast JS runtime + bundler |
+
+### Media
+
+| Tool | Purpose |
+|---|---|
+| `imagemagick` (`magick`) | Image manipulation (used by `optimize-img`, `resize-img`, `3d-screenshot`) |
+| `jpegoptim` | Lossless JPEG optimizer (used by `optimize-img`) |
+| `pngquant` | Lossy PNG quantizer (used by `optimize-img`) |
+| `oxipng` | Lossless PNG optimizer (used by `optimize-img`) |
+| `gifsicle` | GIF optimizer (used by `optimize-img`) |
+| `webp` | `cwebp`/`dwebp` for WebP conversion |
+| `gifski` | High-quality video → GIF |
+| `ffmpeg` | Video/audio swiss knife |
+| `yt-dlp` | YouTube/media downloader |
+| `asciinema` | Record terminal sessions |
+
+### Aliases quick reference
+
+```
+g     → git
+gs    → git status
+gl    → git log --all --decorate --oneline --graph
+ll    → ls -FGlAhp
+c     → clear
+~     → cd ~
+work  → cd ~/workspace
+tmp   → cd ~/tmp
+ip    → local IP
+publicIp → public IP via ipinfo.io
+lr    → recursive dir tree (less)
+trash → move file to ~/.Trash
+cd    → overridden to ls after cd
+```
+
+### Other CLIs
+
+| Tool | Purpose |
+|---|---|
+| `mas` | Mac App Store CLI (used in `os/install.sh` for Lungo) |
+
+---
+
+## Update
 
 ```shell
-dotfiles update-plugin my-awesome-plugin
+dotfiles update-plugin dotfiles-cesalberca
 ```
 
-## How to remove
-
-If you have a plugin that you no longer want to use, you can remove it executing:
+## Uninstall
 
 ```shell
-dotfiles uninstall-plugin <PLUGIN_NAME>
+dotfiles uninstall-plugin dotfiles-cesalberca
 ```
-
-For example:
-
-```shell
-dotfiles uninstall-plugin my-awesome-plugin
-```
-
-1. Change ctrl with mayusc
