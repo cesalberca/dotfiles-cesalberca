@@ -1,1 +1,1 @@
-source $(brew --prefix)/etc/profile.d/z.sh
+eval "$(zoxide init zsh --cmd z)"
