@@ -1,0 +1,9 @@
+# Global runtime versions, symlinked to ~/.mise.toml by the dotfiles framework.
+# Applies to everything under $HOME; per-project mise.toml files override these.
+# Provision on a fresh machine with: mise install
+
+[tools]
+node = "lts"
+bun = "latest"
+deno = "latest"
+java = "temurin-21"
