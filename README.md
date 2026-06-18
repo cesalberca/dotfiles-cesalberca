@@ -14,10 +14,11 @@ dotfiles install
 ## Layout
 
 ```shell
-├─ bin   # Custom executables added to $PATH
-├─ git   # Git config (symlinked to $HOME)
-├─ os    # macOS defaults + Brewfile + install.sh
-└─ zsh   # Shell aliases, env, plugins
+├─ bin    # Custom executables added to $PATH
+├─ claude # Claude Code config + hooks (linked into ~/.claude)
+├─ git    # Git config (symlinked to $HOME)
+├─ os     # macOS defaults + Brewfile + install.sh
+└─ zsh    # Shell aliases, env, plugins
 ```
 
 Each top-level folder is a **topic**:
@@ -101,6 +102,8 @@ Diffs use `delta` with line numbers + navigation (`n`/`N` between hunks).
 | `claude` (cask) | Claude desktop app |
 | `deno` | Secure JS/TS runtime |
 | `bun` | Fast JS runtime + bundler |
+
+`claude-code` config lives in the `claude/` topic and is linked into `~/.claude` on `dotfiles install`: `settings.json` plus a `no-em-dash` `UserPromptSubmit` hook that stops the model emitting em/en dashes. See [`claude/README.md`](claude/README.md).
 
 ### Media
 

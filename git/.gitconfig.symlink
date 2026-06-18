@@ -1,9 +1,12 @@
 [user]
 	name = César Alberca
 	email = cesar@cesalberca.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRos8BTCuHSAiocGJ6GX5ptUqIW0FJUVOX5+ECIfDih
+[credential]
+	helper = osxkeychain
 [alias]
 	c = commit -m
+	s = status
+	l = log
 	ch = checkout
 	a = add
 	p = pull
@@ -31,11 +34,44 @@
 [pull]
 	ff = true
 	rebase = false
+[push]
+	autoSetupRemote = true
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [gpg]
 	format = ssh
 [gpg "ssh"]
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = ~/.config/git/allowed_signers
 [commit]
 	gpgsign = true
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = ~/.gitconfig-github
+[includeIf "hasconfig:remote.*.url:git@github.com:**/**"]
+	path = ~/.gitconfig-github
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/**"]
+	path = ~/.gitconfig-github
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
+	path = ~/.gitconfig-gitlab
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:**/**"]
+	path = ~/.gitconfig-gitlab
+[includeIf "hasconfig:remote.*.url:ssh://git@gitlab.com/**"]
+	path = ~/.gitconfig-gitlab
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.innovium.ai/**"]
+	path = ~/.gitconfig-gitlab
+[includeIf "hasconfig:remote.*.url:git@gitlab.innovium.ai:**/**"]
+	path = ~/.gitconfig-gitlab
+[includeIf "hasconfig:remote.*.url:ssh://git@gitlab.innovium.ai/**"]
+	path = ~/.gitconfig-gitlab
+
+# Local-only work identity. File is gitignored; create it on machines that need it.
+[includeIf "gitdir:~/workspace/tii/"]
+	path = ~/.gitconfig-work
