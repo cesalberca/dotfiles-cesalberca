@@ -14,11 +14,12 @@ dotfiles install
 ## Layout
 
 ```shell
-├─ bin    # Custom executables added to $PATH
-├─ claude # Claude Code config + hooks (linked into ~/.claude)
-├─ git    # Git config (symlinked to $HOME)
-├─ os     # macOS defaults + Brewfile + install.sh
-└─ zsh    # Shell aliases, env, plugins
+├─ 1password # 1Password SSH agent config: Personal vault block merged into the shared agent.toml
+├─ bin       # Custom executables added to $PATH
+├─ claude    # Claude Code config + hooks (linked into ~/.claude)
+├─ git       # Git config (symlinked to $HOME)
+├─ os        # macOS defaults + Brewfile + install.sh
+└─ zsh       # Shell aliases, env, plugins
 ```
 
 Each top-level folder is a **topic**:

@@ -1,0 +1,6 @@
+# dotfiles-cesalberca's contribution to the 1Password SSH agent config.
+# install.sh merges this block into the shared ~/.config/1Password/ssh/agent.toml.
+# Personal SSH keys live in the Personal vault; org vaults (TII, TTCC) are owned
+# by their respective plugins.
+[[ssh-keys]]
+vault = "Personal"
