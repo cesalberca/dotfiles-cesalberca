@@ -72,7 +72,6 @@ Any shipped `scripts/*.sh` is made executable on install.
 | architecture | `tdd-slice` | Drive a feature test-first across domain, use-case, integration, E2E. |
 | workflow | `validate` | Auto-detect the toolchain and run build/typecheck/test/lint/format. Ships `scripts/validate.sh`. |
 | workflow | `cleanup-after-merge` | After a merge, verify it, then (on confirm) delete the branch + worktree and prompt `/clear`. |
-| workflow | `check-data-sources` | Probe each external integration and report live vs fixture, without leaking secrets. |
 | meta | `create-skill` | Scaffold a new skill per the Agent Skills spec. |
 | meta | `remember` | Capture a learning and route it to CLAUDE.md, a skill, user memory, or `create-skill`. |
 
