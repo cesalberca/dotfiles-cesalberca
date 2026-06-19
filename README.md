@@ -103,7 +103,7 @@ Diffs use `delta` with line numbers + navigation (`n`/`N` between hunks).
 | `deno` | Secure JS/TS runtime |
 | `bun` | Fast JS runtime + bundler |
 
-`claude-code` config lives in the `claude/` topic and is linked into `~/.claude` on `dotfiles install`: `settings.json` plus a `no-em-dash` `UserPromptSubmit` hook that stops the model emitting em/en dashes. See [`claude/README.md`](claude/README.md).
+`claude-code` config lives in the `claude/` topic and is linked into `~/.claude` on `dotfiles install`: `settings.json`, the style hooks (stop the model emitting em/en dashes and arrow glyphs), and a set of reusable, project-agnostic Agent Skills under `claude/skills/` that are flat-linked into `~/.claude/skills/`. See [`claude/README.md`](claude/README.md).
 
 ### Media
 
