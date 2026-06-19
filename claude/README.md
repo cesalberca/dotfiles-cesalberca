@@ -11,6 +11,7 @@ Claude Code config, symlinked into `~/.claude` on `dotfiles install`.
 | `hooks/no-em-dash-files.sh` | `~/.claude/hooks/no-em-dash-files.sh` |
 | `hooks/no-arrows.sh` | `~/.claude/hooks/no-arrows.sh` |
 | `hooks/no-arrows-files.sh` | `~/.claude/hooks/no-arrows-files.sh` |
+| `skills/<category>/<skill>/` | `~/.claude/skills/<skill>/` |
 
 Linking is done by `install.sh`, not the framework's `*.symlink` convention,
 because the framework only links top-level files into `$HOME` and these targets
@@ -40,3 +41,39 @@ are nested under `~/.claude/`. Existing real files are backed up to
 
 The `PreToolUse` / Bash entry in `settings.json` points at `rtk-rewrite.sh`,
 which is installed and managed by `rtk` itself, not by this topic.
+
+## Skills
+
+Reusable, project-agnostic [Agent Skills](https://agentskills.io) live under
+`skills/`, organised by category for readability:
+
+```
+skills/
+  architecture/   # clean-architecture / DDD slice builders
+  workflow/       # dev-process actions
+  meta/           # skills about skills and memory
+```
+
+Claude discovers personal skills only FLAT at `~/.claude/skills/<skill>/`, so
+`install.sh` symlinks each skill into `~/.claude/skills/` by its directory
+basename, ignoring the category folder. Therefore **every skill directory name
+must be globally unique across categories** or install aborts with an error.
+Any shipped `scripts/*.sh` is made executable on install.
+
+| Category | Skill | What it does |
+|---|---|---|
+| architecture | `architecture-guardrails` | Enforce layer/module boundaries via package `exports` + a dependency linter. |
+| architecture | `create-domain-model` | Author a pure, framework-free domain model (value objects, entities, services). |
+| architecture | `create-repository-contract` | Define a domain-owned repository interface. |
+| architecture | `create-use-case` | Author an application use case returning a plain serializable DTO. |
+| architecture | `create-infrastructure` | Implement a repository with a real adapter + an in-memory adapter. |
+| architecture | `create-delivery` | Build the delivery/UI layer that calls a use case via DI. |
+| architecture | `wire-dependencies` | Wire a feature into the DI container / composition root. |
+| architecture | `tdd-slice` | Drive a feature test-first across domain, use-case, integration, E2E. |
+| workflow | `validate` | Auto-detect the toolchain and run build/typecheck/test/lint/format. Ships `scripts/validate.sh`. |
+| workflow | `cleanup-after-merge` | After a merge, verify it, then (on confirm) delete the branch + worktree and prompt `/clear`. |
+| meta | `create-skill` | Scaffold a new skill per the Agent Skills spec. |
+| meta | `remember` | Capture a learning and route it to CLAUDE.md, a skill, user memory, or `create-skill`. |
+
+`remember` and `create-skill` form the meta loop: `remember` chains to
+`create-skill` when a learning needs a brand new skill.
