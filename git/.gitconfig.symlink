@@ -58,6 +58,13 @@
 [includeIf "hasconfig:remote.*.url:ssh://git@github.com/**"]
 	path = ~/.gitconfig-github
 
+# TTCC GitHub repos use the `github-ttcc` SSH host alias (see dotfiles-ttcc),
+# which is not github.com, so the rules above don't match. Resolve the TTCC
+# identity (calberca@ttcc.ai + TTCC signing key) from a file shipped by the
+# private dotfiles-ttcc plugin; harmlessly ignored where that file is absent.
+[includeIf "hasconfig:remote.*.url:git@github-ttcc:**/**"]
+	path = ~/.gitconfig-ttcc
+
 [includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
 	path = ~/.gitconfig-gitlab
 [includeIf "hasconfig:remote.*.url:git@gitlab.com:**/**"]
