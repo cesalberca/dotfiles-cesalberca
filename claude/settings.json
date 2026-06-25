@@ -3,6 +3,9 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "env": {
+    "CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK": "1"
+  },
   "hooks": {
     "PreToolUse": [
       {
