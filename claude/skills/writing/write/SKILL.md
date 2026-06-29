@@ -1,6 +1,6 @@
 ---
 name: write
-description: Write or rewrite prose in César Alberca's voice, in English or Spanish. Sincere, warm, intention-driven, first person, speaks to the reader, bold for key ideas, italic for charged words, short paragraphs, rhetorical questions answered in line, an outward-turning close. Always write natively in the language requested, never a literal translation. Use when César asks to draft, write, rewrite, expand, or polish a post, newsletter issue, LinkedIn or social post, X thread, email, talk abstract, or README intro "in my voice", "like me", "as César", "con mi voz", "como yo", "escribe esto como yo", or invokes /write. Not for code, commit messages, or PR descriptions.
+description: Make it sound like me. Write or rewrite my prose, in English or Spanish, in my own voice: first person, talking straight to you, intention first, the key ideas in bold and the charged words in italics, short paragraphs, a rhetorical question answered on the spot, and a close that turns outward. Always write natively in the language I ask for, never a literal translation. Reach for this when I want to draft, write, rewrite, expand, or polish a blog post, newsletter issue, LinkedIn or social post, X thread, email, talk abstract, or README intro, when I say "in my voice", "like me", "as César", "con mi voz", "como yo" or "escribe esto como yo", or when I invoke /write. Not for code, commit messages, or PR descriptions.
 metadata:
   author: César Alberca
 ---
