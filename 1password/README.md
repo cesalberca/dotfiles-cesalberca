@@ -1,19 +1,10 @@
-# 1password - SSH agent config (Personal vault)
+# 1password - SSH agent config (all vaults)
 
-[`agent.toml`](./agent.toml) is this plugin's **fragment** of the 1Password SSH agent config: it enables the **Personal** vault. The org vaults are owned by their own plugins ([`dotfiles-tii`](https://github.com/cesalberca/dotfiles-tii) -> TII, [`dotfiles-ttcc`](https://github.com/cesalberca/dotfiles-ttcc) -> TTCC).
+[`agent.toml`](./agent.toml) is the **complete** 1Password SSH agent config. It lists every vault whose keys the agent should offer: **Personal**, **TII**, and **TTCC**. This personal plugin owns the whole file; the org plugins ([`dotfiles-tii`](https://github.com/cesalberca/dotfiles-tii), [`dotfiles-ttcc`](https://github.com/cesalberca/dotfiles-ttcc)) carry only their SSH host configs and public keys.
 
-## Why a fragment, not a whole file
+## One file, all vaults
 
-The 1Password SSH agent reads exactly one file, `~/.config/1Password/ssh/agent.toml`, with no include or merge directive. If each plugin symlinked its own copy there, the last `dotfiles install` to run would clobber the rest. So instead every plugin's `install.sh` merges its fragment into that single file, wrapped in markers it alone owns:
-
-```toml
-# >>> dotfiles-cesalberca >>>
-[[ssh-keys]]
-vault = "Personal"
-# <<< dotfiles-cesalberca <<<
-```
-
-Re-running install replaces only this block; blocks owned by other plugins are left untouched. The first run converts any pre-existing symlink to a managed regular file and backs up an unmanaged file once (`*.bak.<epoch>`). After merging, it logs a reminder to create the vault this fragment enables; if the `op` CLI is installed and signed in, it actively verifies the vault exists and prints `[ACTION NEEDED]` if not.
+The 1Password SSH agent reads exactly one file, `~/.config/1Password/ssh/agent.toml`, with no include or merge directive. Rather than have several plugins each contribute a fragment (and dance around clobbering each other), this one plugin holds the entire config and [`install.sh`](./install.sh) just symlinks it into place. Adding or removing a vault is a one-line edit to `agent.toml`.
 
 ## After install
 

@@ -1,6 +1,19 @@
-# dotfiles-cesalberca's contribution to the 1Password SSH agent config.
-# install.sh merges this block into the shared ~/.config/1Password/ssh/agent.toml.
-# Personal SSH keys live in the Personal vault; org vaults (TII, TTCC) are owned
-# by their respective plugins.
+# The 1Password SSH agent reads exactly one file and has no include/merge
+# directive, so this single file lists every vault whose keys the agent should
+# offer. install.sh links it to ~/.config/1Password/ssh/agent.toml.
+#
+# All vaults live here on purpose: this personal plugin owns the whole agent
+# config. The org plugins (dotfiles-tii, dotfiles-ttcc) carry only their SSH
+# host configs and public keys; they no longer ship a 1Password fragment.
+
+# Personal vault: personal SSH keys.
 [[ssh-keys]]
 vault = "Personal"
+
+# TII vault: holds `Innovium VPS SSH Key` (authenticates asia and cesar-vm).
+[[ssh-keys]]
+vault = "TII"
+
+# TTCC vault: holds the TTCC org's GitHub SSH key.
+[[ssh-keys]]
+vault = "TTCC"

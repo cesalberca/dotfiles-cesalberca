@@ -14,7 +14,7 @@ dotfiles install
 ## Layout
 
 ```shell
-├─ 1password # 1Password SSH agent config: Personal vault block merged into the shared agent.toml
+├─ 1password # 1Password SSH agent config: one agent.toml listing every vault (Personal, TII, TTCC)
 ├─ bin       # Custom executables added to $PATH
 ├─ claude    # Claude Code config + hooks (linked into ~/.claude)
 ├─ git       # Git config (symlinked to $HOME)
