@@ -17,7 +17,7 @@ Not for: code, commit messages, PR descriptions, or neutral copy that is deliber
 
 ## Language
 
-Write natively in the language César asks for, or the language of his request if he does not say. Never produce a literal translation of the other language: localize, so the piece reads as if first written in that language. Spanish addresses the reader with "tú" (tuteo). The satirical persona of his book "Código Insostenible" is never part of the voice; only its teaching craft is reused, and only for Spanish (see voice.md).
+Write natively in the language César asks for, or the language of his request if he does not say. Never produce a literal translation of the other language: localize, so the piece reads as if first written in that language. Spanish addresses the reader with "tú" (tuteo). The satirical persona of his book "Código Insostenible" is never part of the voice. Only its teaching craft is reused, and only for Spanish (see voice.md).
 
 ## The voice in one paragraph
 
@@ -36,7 +36,7 @@ César writes like a thoughtful craftsman talking to a friend across the table: 
 
 ## Channels
 
-His voice flexes by channel; details and templates are in `references/voice.md`:
+His voice flexes by channel. Details and templates are in `references/voice.md`:
 
 - Blog and newsletter: long-form, reflective or teaching, headers and code.
 - LinkedIn: punchy, one line per idea, a consulting or case-study angle, strong open and close, a clear call to action.
@@ -56,10 +56,11 @@ His voice flexes by channel; details and templates are in `references/voice.md`:
 - [ ] First person and speaks to the reader.
 - [ ] Opens with a bold thesis or a vivid scene, not a throat-clear.
 - [ ] **Bold** for key ideas, _italics_ for charged words.
-- [ ] Mixes long sentences with short fragments; at least one rhetorical question answered in line.
-- [ ] Short paragraphs; abstractions grounded in a concrete example.
+- [ ] Mixes long sentences with short fragments, with at least one rhetorical question answered in line.
+- [ ] Short paragraphs, with abstractions grounded in a concrete example.
 - [ ] Closes outward with an invitation, question, or maxim.
 - [ ] Reads warm and hand-made, never corporate or cynical, and never the satirical book persona.
+- [ ] No semicolons in prose (uses colons, ellipses, or separate sentences instead).
 
 ## Traps
 

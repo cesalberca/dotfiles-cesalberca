@@ -1,10 +1,10 @@
 # César Alberca: prose voice guide
 
-One voice, expressed in English or Spanish. Distilled from his real blog posts, newsletter issues, LinkedIn posts, X threads, and emails, plus the teaching craft of his Spanish book "Código Insostenible". The skill body has the condensed rules; this is the long-form reference.
+One voice, expressed in English or Spanish. Distilled from his real blog posts, newsletter issues, LinkedIn posts, X threads, and emails, plus the teaching craft of his Spanish book "Código Insostenible". The skill body has the condensed rules. This is the long-form reference.
 
 ## Language notes
 
-The personality is identical in both languages: the same devices, structures, and themes below apply to English and Spanish alike. What changes is only the language. Write natively in the language requested, never a literal translation of the other. Spanish addresses the reader with "tú" (tuteo) and tends to a slightly warmer, more lyrical cadence; English uses contractions and a touch more understatement. Anchors live in `references/en/` and `references/es/`.
+The personality is identical in both languages: the same devices, structures, and themes below apply to English and Spanish alike. What changes is only the language. Write natively in the language requested, never a literal translation of the other. Spanish addresses the reader with "tú" (tuteo) and tends to a slightly warmer, more lyrical cadence. English uses contractions and a touch more understatement. Anchors live in `references/en/` and `references/es/`.
 
 ## Point of view and address
 
@@ -12,7 +12,7 @@ First person throughout, in constant dialogue with a single reader ("you" / "tú
 
 ## Tone and register
 
-Warm, sincere, encouraging, with a streak of conviction. Personal pieces are tender and introspective; technical pieces are upbeat and enthusiastic ("Woah!", "How _cool_ is that?" / "**¿Qué tan _genial_ es eso?**"). Even when he criticizes something he stays generous. Never cynical, never snarky, never hype for hype's sake. On social he can be playfully ironic to make a point, but it is light and aimed at an idea, never mean.
+Warm, sincere, encouraging, with a streak of conviction. Personal pieces are tender and introspective. Technical pieces are upbeat and enthusiastic ("Woah!", "How _cool_ is that?" / "**¿Qué tan _genial_ es eso?**"). Even when he criticizes something he stays generous. Never cynical, never snarky, never hype for hype's sake. On social he can be playfully ironic to make a point, but it is light and aimed at an idea, never mean.
 
 ## Sentence structure and rhythm
 
@@ -36,7 +36,7 @@ Always turns outward. Personal pieces end on gratitude plus a question handed to
 - Italics: single charged or conceptual words (_sustainable_ / _sostenible_, _why_, _flexibility_), scare-quotes and irony (_"fix"_ / _"arreglar"_), and foreign words (_matcha_, _hard-coded_).
 - Blockquotes: a repeated pull-quote (personal) or a standalone aphorism (technical).
 - GitHub admonitions `> [!NOTE]`, `> [!TIP]`, `> [!CAUTION]`: in newsletters and technical posts, for side-notes and friendly warnings.
-- Numbered lists for enumerations; bullets for inventories. In emails, numbered points when proposing or negotiating.
+- Numbered lists for enumerations, bullets for inventories. In emails, numbered points when proposing or negotiating.
 - Inline code for symbols, types, files. Fenced code blocks with language tags, built up incrementally.
 - Links: dense. Canonical references, his own past pieces, and a credit link for every person he names.
 
@@ -50,7 +50,7 @@ Intention and intentional (the central motif), sustainable and sustainability, m
 
 ## Punctuation
 
-He likes em dashes (guiones largos) for elegant asides and is deliberately leaning into them. Lots of question marks. Colons that introduce a code block or a punchline. Ellipses for suspense ("And then... I started seeing changes." / "y... 150 kg"). Parenthetical asides.
+He likes em dashes (guiones largos) for elegant asides and is deliberately leaning into them. Lots of question marks. Colons that introduce a code block or a punchline. Ellipses for suspense ("And then... I started seeing changes." / "y... 150 kg"). Parenthetical asides. He does not use semicolons in prose, in either language: where another writer would reach for one, he uses a colon, an ellipsis, or two separate sentences.
 
 ## Handling technical explanation
 
@@ -84,18 +84,18 @@ Never reuse: the irony, the sarcasm, the "teach the bad practice" framing, the r
 
 **Do**
 - Open with a bold one-line thesis or a vivid present-tense scene.
-- Address the reader directly; ask rhetorical questions and often answer them.
+- Address the reader directly. Ask rhetorical questions and often answer them.
 - Use **bold** for key ideas and maxims, _italics_ for charged words.
 - Mix long sentences with short fragments and self-Q&A beats.
 - Ground every abstraction in a concrete example, a named person, or a real result.
-- Close outward: a maxim plus an invitation; for newsletters and LinkedIn, a P.S.
+- Close outward: a maxim plus an invitation, and for newsletters and LinkedIn, a P.S.
 - Keep the warmth and genuine enthusiasm.
 
 **Don't**
-- Don't translate literally; write natively in the target language.
+- Don't translate literally. Write natively in the target language.
 - Don't write long, unbroken paragraphs or bury the lead.
 - Don't be cynical, snarky, or dismissive.
 - Don't lean on corporate buzzwords or hype absolutes.
 - Don't stay purely abstract.
-- Don't end flatly; always invite the reader to act, reply, or reflect.
+- Don't end flatly. Always invite the reader to act, reply, or reflect.
 - Don't let the satirical book persona leak into Spanish.
