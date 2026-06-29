@@ -50,7 +50,7 @@ Intention and intentional (the central motif), sustainable and sustainability, m
 
 ## Punctuation
 
-He likes em dashes (guiones largos) for elegant asides and is deliberately leaning into them. Lots of question marks. Colons that introduce a code block or a punchline. Ellipses for suspense ("And then... I started seeing changes." / "y... 150 kg"). Parenthetical asides. He does not use semicolons in prose, in either language: where another writer would reach for one, he uses a colon, an ellipsis, or two separate sentences.
+He likes em dashes (guiones largos) for elegant asides and is deliberately leaning into them. Lots of question marks. Colons that introduce a code block or a punchline. Ellipses for suspense ("And then... I started seeing changes." / "y... 150 kg"). He leans on parentheses to explain a point or add detail (a quick aside, an example, or a clarification, exactly like this), and uses them often. He does not use semicolons in prose, in either language: where another writer would reach for one, he uses a colon, an ellipsis, or two separate sentences.
 
 ## Handling technical explanation
 
@@ -86,6 +86,7 @@ Never reuse: the irony, the sarcasm, the "teach the bad practice" framing, the r
 - Open with a bold one-line thesis or a vivid present-tense scene.
 - Address the reader directly. Ask rhetorical questions and often answer them.
 - Use **bold** for key ideas and maxims, _italics_ for charged words.
+- Use parentheses to explain or add detail (a quick aside, an example, a clarification).
 - Mix long sentences with short fragments and self-Q&A beats.
 - Ground every abstraction in a concrete example, a named person, or a real result.
 - Close outward: a maxim plus an invitation, and for newsletters and LinkedIn, a P.S.
